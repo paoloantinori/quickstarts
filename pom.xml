@@ -121,8 +121,14 @@
               <configuration>
                 <rules>
                   <requireMavenVersion>
-                    <version>${maven.require.version}</version>
+                    <version>[${maven.require.version},)</version>
                   </requireMavenVersion>
+                  <bannedPlugins>
+                    <excludes>
+                      <exclude>io.fabric8.jube:*:*-SNAPSHOT</exclude>
+                    </excludes>
+                    <message>Project depends on Jube SNAPSHOT artifacts. It should use {jube.version} instead.</message>
+                  </bannedPlugins>
                 </rules>
               </configuration>
             </execution>
